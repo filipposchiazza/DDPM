@@ -199,6 +199,15 @@ class DiffusionModel(keras.Model):
         model.compile(loss=keras.losses.MeanSquaredError())
         
         return model
+    
+    @classmethod
+    def load_history(cls, save_folder):
+        
+        history_file = os.path.join(save_folder, 'history.pkl')
+        with open(history_file, 'rb') as f:
+            history = pickle.load(f)
+        
+        return history
         
 
     
